@@ -19,6 +19,11 @@ so can be very useful if you have a lot of data you wint to plot in a hurry.
 
 ## Instructions
 command line:
+python plotCSV.py filename 2 3
+    # Parameters
+    # 1: filename,
+    # 2: True/False, Is the first row a header? Default:  True
+    # 3: True/False, Should the first column be used as the x axis? Default: True
 
 ## TODO
 
@@ -54,7 +59,7 @@ mean that the x-axis is not a consistent scale.
 
 """
 
-def plot_csv(csv_in, b_header=True, b_first_col_time = False):
+def plot_csv(csv_in, b_header=True, b_first_col_time = True):
     data = []
     timestamps = []
     #use numpy genfrom text to open csv file
@@ -131,31 +136,11 @@ def plot_csv(csv_in, b_header=True, b_first_col_time = False):
 
     print("Show Plot...")
     plt.show()
+    # outpath = csv_in[:-4] + '.svg'
+    # fig.savefig(outpath)
+    # print("File saved as " + outpath)
     print("Finished")
 
-def plot_csv_with_cmd_args():
-    # create argument parser
-    descStr = "This script plots all the columns of a csv file on a graph"
-    parser = argparse.ArgumentParser(description=descStr)
-    # add expected arguments
-    parser.add_argument('--file', dest='fileName', required=True)
-    parser.add_argument('--no-header', dest=header, action='store_false')
-    parser.add_argument('--skip-first-col', dest=skipFirstCol, action='store_false')
-    #parse arguments
-    args = parser.parse_args()
-
-    fileName = args.fileName
-
-    plot_csv(fileName, args.header, args.skipFirstCol)
-
 if __name__ == '__main__':
-    # plot_csv("C:\\_CODE\\pythonPlotting\\iso_time_test.csv",True,True)
-    # plot_csv("C:\\_CODE\\pythonPlotting\\iso_time_test.csv",False,True)
-    # plot_csv("C:\\_CODE\\pythonPlotting\\epoch_test.csv",True,False)
-    # plot_csv("C:\\_CODE\\pythonPlotting\\epoch_test.csv",True,False)
-    # plot_csv("C:\\_CODE\\pythonPlotting\\epoch_test_gappy.csv",True,True)
-    # plot_csv("C:\\_CODE\\pythonPlotting\\epoch_test_gappy2.csv",True,False)
-    plot_csv("C:\\_CODE\\pythonPlotting\\rawadctest2-gaps.csv",True,True)
-    # plot_csv("C:\\_CODE\\pythonPlotting\\epoch_test_no_header.csv",True,True)
-    # plot_csv("C:\\_CODE\\pythonPlotting\\gappy_pack_data.csv",True,True)
-    # plot_csv_with_cmd_args()
+        plot_csv(sys.argv[1])
+        # plot_csv("C:\\_CODE\\pythonPlotting\\rawadctest2.csv")

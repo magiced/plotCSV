@@ -22,9 +22,13 @@ You will need the Matplotlib and Numpy libraries. install them with
     plotCSV.plot_csv(csv_in, b_header, b_first_col_time)
 
 csv_in: path of csv file
+
 b_header: True = show the first line as a legend
-b_first_col_time: True = the first column is the x-axis of the plot
-False = plot the first column as a line, and plot the data sequentially
+
+b_first_col_time:
+
++ True = the first column is the x-axis of the plot
++ False = plot the first column as a line, and plot the data sequentially
 
 ### Command line
 
@@ -40,13 +44,10 @@ False = plot the first column as a line, and plot the data sequentially
 
 ### DONE
 
-+ add header of author date and instructions
-+ if the first column is a time column, use it as the x axis
-else plot it as a series
-
-+ modfiy first column behaviour so if you plot it, the script plots all number sequentially,
++ add header of author date and instructions.
++ if the first column is a time column, use it as the x axis else plot it as a series.
++ modifiy first column behaviour so if you plot it, the script plots all number sequentially,
 if not, it assumes the first column is a time string, and uses that as the x axis values
-
 + 2 time formats:
     + ISO8601 YYYY-MM-DDTHH:MM:SS.SSSSSS '2019-08-21T14:25:58.005146' as supplied by datetime.datetime.now().isoformat()
     + seconds (relative or epoch, who cares?) - matplotlib takes these dates in no probs
